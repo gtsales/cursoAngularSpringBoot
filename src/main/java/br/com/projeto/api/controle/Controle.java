@@ -16,9 +16,9 @@ public class Controle {
     private Repositorio acao;
 
     @PostMapping("/")
-    public Cliente cadastrar(@RequestBody Cliente c){
+    public Cliente cadastrar(@RequestBody Cliente c){//Aqui é passado o tipo de informação que estou esperando "Cliente" e o "c" é o objeto que vai receber
 
-        return acao.save(c);
+        return acao.save(c);//c é um objeto que contém as características da classe Cliente
 
     }
 
