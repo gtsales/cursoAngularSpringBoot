@@ -3,6 +3,7 @@ package br.com.projeto.api.controle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,9 +24,16 @@ public class Controle {
     }
 
     @GetMapping("/")
-    public Iterable<Cliente> selecionar(){//
+    public Iterable<Cliente> selecionar(){//Iterable declara que posso percorrer os elementos 1 por 1, e dento de <> eu declaro que elemento será percorrido
 
         return acao.findAll();
+
+    }
+
+    @PutMapping("/")
+    public Cliente editar(@RequestBody Cliente c){//Aqui é passado o tipo de informação que estou esperando "Cliente" e o "c" é o objeto que vai enviar
+
+        return acao.save(c);
 
     }
 
