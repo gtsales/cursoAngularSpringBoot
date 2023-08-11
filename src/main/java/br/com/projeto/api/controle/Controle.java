@@ -23,9 +23,9 @@ public class Controle {
     }
 
     @GetMapping("/")
-    public String teste(){
+    public Iterable<Cliente> selecionar(){//
 
-        return "Hello World!";
+        return acao.findAll();
 
     }
 
