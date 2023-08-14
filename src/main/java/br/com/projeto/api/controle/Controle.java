@@ -1,6 +1,7 @@
 package br.com.projeto.api.controle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import br.com.projeto.api.modelo.Cliente;
 import br.com.projeto.api.repositorio.Repositorio;
 
 @RestController
+@CrossOrigin(origins = "*")//passa a porta do front-end para que possa acessar o back-end, o * libera todas as portas
 public class Controle {
     
     @Autowired
@@ -25,8 +27,15 @@ public class Controle {
 
     }
 
-    @GetMapping("/")
-    public Iterable<Cliente> selecionar(){//Iterable declara que posso percorrer os elementos 1 por 1, e dento de <> eu declaro que elemento será percorrido
+    @GetMapping("/listar")//adicionado o endpoint listar para a requisição no front-end
+    public Iterable<Cliente> selecionarhtml(){//Iterable declara que posso percorrer os elementos 1 por 1, e dentro de <> eu declaro que elemento será percorrido
+
+        return acao.findAll();
+
+    }
+
+    @GetMapping("/")//
+    public Iterable<Cliente> selecionar(){//Iterable declara que posso percorrer os elementos 1 por 1, e dentro de <> eu declaro que elemento será percorrido
 
         return acao.findAll();
 
